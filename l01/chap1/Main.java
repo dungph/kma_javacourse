@@ -1,6 +1,12 @@
+import java.util.Vector;
+
 public class Main {
     public static void main(String[] a) {
-        
+        if (Date.test()) {
+            System.out.println("Daate OK");
+        } else {
+            System.out.println("Date failed");
+        }
     }
 }
 
@@ -28,6 +34,7 @@ class Circle {
     public float area() {
         return radius*radius*(float)3.14;
     }
+
 }
 
 class Rectangle {
@@ -104,7 +111,7 @@ class Employee {
 class Account {
     int id;
     String name;
-    int balance;
+    int balance = 0;
 
     public int getId() {
             return id;
@@ -124,28 +131,30 @@ class Account {
     public void setBalance(int balance) {
             this.balance = balance;
     }
-    public void credit(int amount) {
+    public boolean debit(int amount) {
         if (balance < amount) {
-            System.out.println("Credit failed");
+            System.out.println("Debit failed");
+            return false;
         } else {
-            System.out.println("Credit failed");
+            System.out.println("Debit failed");
             balance -= amount;          
+            return false;
+
         }
     }
 
-    public void debit(int amount) {
+    public void credit(int amount) {
         balance += amount;
     }
 
-    public void transferTo(Account account, int amount) {
-        if (balance < amount) {
-            System.out.println("Credit failed");
-            System.out.println("Transfer failed");
-
+    public boolean transferTo(Account account, int amount) {
+        if (this.debit(amount)) {
+            account.credit(amount);
+            System.out.println("Successful");
+            return true;
         } else {
-            System.out.println("Credit failed");
-            balance -= amount;
-            account.debit(amount);
+            System.out.println("Balance < Amount, Abort");
+            return false;
         }
     }
 
@@ -154,6 +163,7 @@ class Account {
         System.out.println("Name: " + name);
         System.out.println("Balance: " + balance);
     }
+    
 }
 
 class Date {
@@ -171,50 +181,34 @@ class Date {
             return month;
     }
     public void setDay(int day) {
-        int upperValid = 0;
-        if (month == 0) {
-            upperValid = 31;
-        } else if (month == 2) {
-            if (year <= 0) {
-                upperValid = 29;
-            } else {
-                upperValid = this.daysInTheMonth();
-            }
+        this.day = day;
+        if (this.isValidIncompleteDate()) {
+
         } else {
-            upperValid = this.daysInTheMonth();
+            this.day = 0;
+            System.out.println("Invalid day, day = 0");
+
         }
-
-
-        if (day > 0 && day <= upperValid) {
-            this.day = day;
-        } else {
-            System.out.println("Invalid day");
-        }               
     }
     public void setYear(int new_year) {
-            if (new_year <= 0) {
-                System.out.println("Invalid year");
-            } else {
-                this.year = new_year;
-                if (day > this.daysInTheMonth()) {
-                    System.out.println("Invalid year");
-                    this.year = 0;
-                }
-            }
+        this.year = new_year;
+
+        if (this.isValidIncompleteDate()) {
+        } else {
+            this.year = 0;
+            System.out.println("Invalid year, year = 0");
+        }
+
     }
 
     public void setMonth(int month) {
-            if (month > 0 && month <=12) {
-                this.month = month;
-                if (year == 0) {
-                    this.year = 4;
-                    if (this.daysInTheMonth() < this.day) {
-                        System.out.println("Invalid month");
-                        this.month = 0;
-                    }
-                    this.year = 0;
-                }
-            }
+        this.month = month;
+
+        if (this.isValidIncompleteDate()) {
+        } else {
+            this.month = 0;
+            System.out.println("Invalid Month, month = 0");
+        }
     }
     public boolean isLeapYear() {
         if (year <= 0) {
@@ -233,19 +227,116 @@ class Date {
             } else {
                 return 28;
             }
-        } else if (month==4 || month == 6 || month = 9 || month == 11) {
+        } else if (month==4 || month == 6 || month == 9 || month == 11) {
             return 30;
         } else {
             return 31;
         }
     }
-    public void showDay() {
-        System.out.println("The date is "
-                + month
-                + " "
-                + day
-                + ", "
-                + year);
-    }
+    public boolean isValidIncompleteDate() {
+        if (day < 0 || month < 0 || year < 0) {
+            return false;
+        }
+        if (month > 12) {
+            return false;
+        }
+        if (year == 0) {
+            if (month == 0) {
+                if (day > 31) {
+                    return false;
+                } else {
+                    return true;
+                }
+            } else {
+                this.year = 4;
 
+                if (day > this.daysInTheMonth()) {
+                    this.year = 0;
+                    return false;
+                } else {
+                    this.year = 0;
+                    return true;
+                }
+            }
+        } else {
+            if (month == 0) {
+                if (day > 31) {
+                    return false;
+                } else {
+                    return true;
+                }
+            } else {
+                if (day > this.daysInTheMonth()) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        }
+    }
+    public boolean isCompleteDate() {
+        if (day*month*year == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    public void showDay() {
+        if (this.isCompleteDate()) {
+            if (this.isValidIncompleteDate()) {
+                System.out.println("The date is "
+                    + month
+                    + " "
+                    + day
+                    + ", "
+                    + year);
+            }
+        } else {
+            System.out.println("The date is Incomplete");
+        }
+    }
+    
+    public static boolean test() {
+        int[] test1 = {31, 1, 1, 1};
+        int[] test2 = {31, 4, 1, 0};
+        int[] test3 = {29, 2, 1, 0};
+        int[] test4 = {29, 2, 4, 1};
+        int[] test5 = {32, 1, 1, 0};
+
+        int[] test6 = {31, 12, 1, 1};
+        int[] test7 = {31, 13, 1, 0};
+        int[] test8 = {31, 1, -1, 0};
+        
+        
+        Vector<int[]> all = new Vector<int[]>();
+        all.add(test1);
+        all.add(test2);
+        all.add(test3);
+        all.add(test4);
+        all.add(test5);
+        all.add(test6);
+        all.add(test7);
+        all.add(test8);
+
+        for (int[] test: all) {
+            Date date = new Date();
+            date.day = test[0];
+            date.month = test[1];
+            date.year = test[2];
+            System.out.println(date.isValidIncompleteDate());
+            System.out.println(test[3] == 1);
+            if (date.isValidIncompleteDate() == (test[3] == 1)) {
+            } else {
+                System.out.println(date.getDay());
+                System.out.println(date.getMonth());
+                System.out.println(date.getYear());
+                System.out.println(test[3]);
+                return false;
+            }
+        }
+    
+        return true;
+        
+    }
 }
