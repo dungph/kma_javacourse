@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] a) {
-
+        PrimeNumber.main(); 
     }
 }
 
@@ -103,7 +103,12 @@ class NhanVien {
                 + " tong_gio_lam_viec " 
                 + workingHours);
     }
- 
+    
+    public static void main() {
+        NhanVien nv = new NhanVien();
+        nv.inputInfo();
+
+    }
 
 }
 
@@ -239,5 +244,91 @@ class MyPoint {
         double dx = (double)(rx - x)*(rx - x);
         double dy = (double)(ry - y)*(ry - y);
         return Math.sqrt(dx + dy);
+    }
+
+    public double distantFrom(MyPoint rp) {
+        int rx = rp.x;
+        int ry = rp.y;
+
+        return this.distantFrom(rx, ry);
+    }
+}
+
+
+class PrimeNumber {
+    int a;
+
+    public void setA(int n) {
+        if (PrimeNumber.isPrimeNumber(n)) {
+            a = n;
+        } else {
+            System.out.println(n + " is not a prime number");
+        }
+    }
+    public int getA() {
+    	return a;
+    }
+
+    PrimeNumber() {}
+    PrimeNumber(int n) {
+        if (PrimeNumber.isPrimeNumber(n)) {
+            a = n;
+        } else {
+            System.out.println(n + " is not a prime number");
+        }
+
+    }
+
+    public static boolean isPrimeNumber(int n) {
+        for (int i = 2; i <= Math.sqrt((double)n); i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public int nextPrimeNumber() {
+        int nextPrime = this.a + 1;
+        while (!PrimeNumber.isPrimeNumber(nextPrime)) {
+            nextPrime += 1;
+        }
+        return nextPrime;
+    }
+
+    public static void main() {
+        PrimeNumber primeNumber = new PrimeNumber(4);
+        
+        if (primeNumber.a == 4) {
+            System.out.println("false");
+            return;
+        } else {
+            System.out.println("pass");
+        }
+
+        primeNumber.setA(4);
+        if (primeNumber.a == 4) {
+            System.out.println("false");
+            return;
+        } else {
+            System.out.println("pass");
+        }
+
+        primeNumber.setA(11);
+        if (primeNumber.a != 11) {
+            System.out.println("false");
+            return;
+        } else {
+            System.out.println("pass");
+        }
+
+        if (primeNumber.nextPrimeNumber() != 13) {
+            System.out.println("false");
+            return;
+        } else {
+            System.out.println("pass");
+        }
+
+
     }
 }
