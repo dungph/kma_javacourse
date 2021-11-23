@@ -14,7 +14,7 @@ class NhanVien {
     int workingHours;
     
     NhanVien() {}
-
+    
     NhanVien(String name, int age, String address, double salary, int workingHours) {
         this.name = name;
         this.age = age;
@@ -23,45 +23,46 @@ class NhanVien {
         this.workingHours = workingHours;
     }
 
-	public String getName() {
-		return name;
-	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public int getAge() {
-		return age;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setAge(int age) {
-		this.age = age;
-	}
+    public int getAge() {
+        return age;
+    }
 
-	public String getAddress() {
-		return address;
-	}
+    public void setAge(int age) {
+        this.age = age;
+    }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    public String getAddress() {
+        return address;
+    }
 
-	public Double getSalary() {
-		return salary;
-	}
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-	public void setSalary(Double salary) {
-		this.salary = salary;
-	}
+    public double getSalary() {
+        return salary;
+    }
 
-	public int getWorkingHours() {
-		return workingHours;
-	}
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
 
-	public void setWorkingHours(int workingHours) {
-		this.workingHours = workingHours;
-	};
+    public int getWorkingHours() {
+        return workingHours;
+    }
+
+    public void setWorkingHours(int workingHours) {
+        this.workingHours = workingHours;
+    }
 
     public void inputInfo() {
         Scanner scanner = new Scanner(System.in);
@@ -127,29 +128,29 @@ class Student {
     }
 
     public String getCode() {
-		return code;
-	}
-	public void setCode(String code) {
-		this.code = code;
-	}
-	public float getAvarageScore() {
-		return avarageScore;
-	}
-	public void setAvarageScore(float avarageScore) {
-		this.avarageScore = avarageScore;
-	}
-	public int getAge() {
-		return age;
-	}
-	public void setAge(int age) {
-		this.age = age;
-	}
-	public String getClassName() {
-		return className;
-	}
-	public void setClassName(String className) {
-		this.className = className;
-	}
+        return code;
+    }
+    public void setCode(String code) {
+        this.code = code;
+    }
+    public float getAvarageScore() {
+        return avarageScore;
+    }
+    public void setAvarageScore(float avarageScore) {
+        this.avarageScore = avarageScore;
+    }
+    public int getAge() {
+        return age;
+    }
+    public void setAge(int age) {
+        this.age = age;
+    }
+    public String getClassName() {
+        return className;
+    }
+    public void setClassName(String className) {
+        this.className = className;
+    }
     public void inputInfo() {
         Scanner scanner = new Scanner(System.in);
         do {
@@ -190,7 +191,7 @@ class Student {
         }
     }
 
-	public static void main() {
+    public static void main() {
         Student s = new Student();
         s.inputInfo();
         s.printInfo();
@@ -211,21 +212,21 @@ class MyPoint {
         this.y = x;
     }
 
-	public int getX() {
-		return x;
-	}
+    public int getX() {
+        return x;
+    }
 
-	public void setX(int x) {
-		this.x = x;
-	}
+    public void setX(int x) {
+        this.x = x;
+    }
 
-	public int getY() {
-		return y;
-	}
+    public int getY() {
+        return y;
+    }
 
-	public void setY(int y) {
-		this.y = y;
-	}
+    public void setY(int y) {
+        this.y = y;
+    }
 
     public void setXY(int x, int y) {
         this.setX(x);
@@ -266,7 +267,7 @@ class PrimeNumber {
         }
     }
     public int getA() {
-    	return a;
+        return a;
     }
 
     PrimeNumber() {}
