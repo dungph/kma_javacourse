@@ -13,6 +13,12 @@ public class Main {
 class Circle {
     float radius;
     String color;
+
+    Circle() {
+        radius = (float)1.0;
+        color = "red";
+    }
+
     public void setColor(String color) {
             this.color = color;
     }
