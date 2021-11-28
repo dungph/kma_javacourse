@@ -123,6 +123,6 @@ class Mouse extends USB {
         return price * quantity*0.8;
     }
     public void printOut() {
-        System.out.println("Mouse bill: " + price + "*" + quantity + " (-20%) =" + price * quantity);
+        System.out.println("Mouse bill: " + price + "*" + quantity + " (-20%) =" + this.total());
     }   
 }
