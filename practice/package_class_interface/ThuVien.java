@@ -74,43 +74,44 @@ public class ThuVien {
 }
 
 class TheMuon {
-    int soPhieuMuon;
-    Date ngayMuon;
-    Date ngayHenTra;
-    String soHieuSach;
-    SinhVien sinhVien;
+    protected int soPhieuMuon;
+    protected Date ngayMuon;
+    protected Date ngayHenTra;
+    protected String soHieuSach;
+    protected SinhVien sinhVien;
     TheMuon() {
         sinhVien = new SinhVien();
     }
 }
 
 class SinhVien {
-    String hoTen;
-    int namSinh;
-    int tuoi; // ?? we don't need this field
-    String lop;
-    public String getHoTen() {
+    protected String hoTen;
+    protected int namSinh;
+    protected int tuoi; // ?? we don't need this field
+    protected String lop;
+    
+    protected String getHoTen() {
         return hoTen;
     }
-    public void setHoTen(String hoTen) {
+    protected void setHoTen(String hoTen) {
         this.hoTen = hoTen;
     }
-    public int getNamSinh() {
+    protected int getNamSinh() {
         return namSinh;
     }
-    public void setNamSinh(int namSinh) {
+    protected void setNamSinh(int namSinh) {
         this.namSinh = namSinh;
     }
-    public int getTuoi() {
+    protected int getTuoi() {
         return tuoi;
     }
-    public void setTuoi(int tuoi) {
+    protected void setTuoi(int tuoi) {
         this.tuoi = tuoi;
     }
-    public String getLop() {
+    protected String getLop() {
         return lop;
     }
-    public void setLop(String lop) {
+    protected void setLop(String lop) {
         this.lop = lop;
     }
     

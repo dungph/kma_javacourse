@@ -9,10 +9,10 @@ public class VanDung {
 }
 
 class Nguoi {
-    String hoTen;
-    String diaChi;
-    int namSinh;
-    public void nhapTT() {
+    private String hoTen;
+    private String diaChi;
+    private int namSinh;
+    protected void nhapTT() {
         Scanner scanner  = new Scanner(System.in);
         System.out.println("Ho Ten: ");
         hoTen = scanner.nextLine();
@@ -21,7 +21,7 @@ class Nguoi {
         System.out.println("Nam Sinh: ");
         namSinh = scanner.nextInt();
     }
-    public void inTT() {
+    protected void inTT() {
         System.out.println(hoTen + " - " + namSinh + "\n" + diaChi);
     }
 }

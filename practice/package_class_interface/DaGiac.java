@@ -18,16 +18,16 @@ import java.util.Vector;
 public class DaGiac {
     public static void main(String[] s) {
         var tamGiac = new TamGiac();
-
+        
         tamGiac.input();
         System.out.println(tamGiac.parimeter());
         System.out.println(tamGiac.area());
 
     }
 
-    int numberOfEdge;
-    Vector<Float> edges;
-    public void input() {
+    protected int numberOfEdge;
+    protected Vector<Float> edges;
+    protected void input() {
         var scanner = new Scanner(System.in);
 
         System.out.println("numberOfEdge: ");
@@ -41,7 +41,7 @@ public class DaGiac {
         }
     }
 
-    public float parimeter() {
+    protected float parimeter() {
         float ret = 0;
         for (Float edge: edges) {
             ret += edge;
@@ -53,11 +53,11 @@ public class DaGiac {
 }
 
 class TamGiac extends DaGiac {
-    TamGiac() {
+    protected TamGiac() {
         edges = new Vector<Float>();
         numberOfEdge = 3;
     }
-    public void input() {
+    protected void input() {
         var scanner = new Scanner(System.in);
 
         for (int i = 0; i < numberOfEdge; i++) {
@@ -67,7 +67,7 @@ class TamGiac extends DaGiac {
         }
     }
 
-    public float parimeter() {
+    protected float parimeter() {
         float ret = 0;
         for (Float edge: edges) {
             ret += edge;
@@ -75,7 +75,7 @@ class TamGiac extends DaGiac {
         return ret;
     }
 
-    public double area() {
+    protected double area() {
         var semi_parimeter = this.parimeter()/2.0;
 
         var squareArea = semi_parimeter;

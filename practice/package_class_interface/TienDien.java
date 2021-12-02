@@ -42,13 +42,13 @@ class BienLai {
     BienLai() {
         consumer = new Consumer();
     }
-    public void insertInformation(Scanner scanner) {
+    protected void insertInformation(Scanner scanner) {
         this.consumer.insertInformation(scanner);
         System.out.println("Input old numeber: ");
         this.oldNumber = scanner.nextInt();
         this.newNumber = scanner.nextInt();
     }
-    public int total() {
+    protected int total() {
         return (newNumber - oldNumber)*850000;
     }
     @Override
@@ -64,22 +64,22 @@ class Consumer {
     String name;
     String houseNumber;
     String meterId;
-	public String getName() {
+	protected String getName() {
 		return name;
 	}
-	public void setName(String name) {
+	protected void setName(String name) {
 		this.name = name;
 	}
-	public String getHouseNumber() {
+	protected String getHouseNumber() {
 		return houseNumber;
 	}
-	public void setHouseNumber(String houseNumber) {
+	protected void setHouseNumber(String houseNumber) {
 		this.houseNumber = houseNumber;
 	}
-	public String getMeterId() {
+	protected String getMeterId() {
 		return meterId;
 	}
-	public void setMeterId(String meterId) {
+	protected void setMeterId(String meterId) {
 		this.meterId = meterId;
 	}
 
@@ -90,7 +90,7 @@ class Consumer {
             + ", meterId: " + meterId;
     }
     
-    public void insertInformation(Scanner scanner) {
+    protected void insertInformation(Scanner scanner) {
         System.out.println("Input name: ");
         this.name = scanner.nextLine();
         System.out.println("Input houseNumber: ");
