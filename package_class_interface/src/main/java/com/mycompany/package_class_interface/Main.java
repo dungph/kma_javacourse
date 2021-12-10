@@ -5,7 +5,7 @@
  */
 package com.mycompany.package_class_interface;
 
-import java.util.Scanner;
+import java.util.Scanner;   
 
 /**
  *
@@ -67,20 +67,12 @@ class ToanHoc {
                 sum += i;
             }
         }
-        if (k == sum) {
-            return true;
-        } else {
-            return false;
-        }
+        return k == sum;
     }
 
     public static boolean kiemTraSoChinhPhuong(int k) {
         var sq = (int) Math.sqrt(k);
-        if (sq * sq == k) {
-            return true;
-        } else {
-            return false;
-        }
+        return sq * sq == k;
     }
 
     public static int tinhFibo(int k) {
