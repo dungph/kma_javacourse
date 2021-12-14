@@ -153,19 +153,23 @@ class Store {
         String maTenSach;
         maTenSach = scanner.nextLine();
 
+        var result = false;
+
         System.out.println("Tìm theo mã: ");
         for (int i = 0; i < totalItems; i++) {
             if (listItems[i].getID().toLowerCase().equals(maTenSach.toLowerCase())) {
+                result = true;
                 listItems[i].printInfo();
             }
         }
         System.out.println("Tìm theo tên: ");
         for (int i = 0; i < totalItems; i++) {
             if (listItems[i].getName().toLowerCase().equals(maTenSach.toLowerCase())) {
+                result = true;
                 listItems[i].printInfo();
             }
         }
-        return false;
+        return result;
     }
 
     public void list() {
